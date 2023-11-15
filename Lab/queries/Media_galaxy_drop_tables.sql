@@ -1,0 +1,12 @@
+DROP TABLE Bestellungen_Produkte;
+DROP TABLE Bestellungen;
+DROP TABLE Bestellungstatus;
+DROP TABLE Lieferung;
+DROP TABLE Lager;
+DROP TABLE Produkte;
+DROP TABLE Hersteller;
+DROP TABLE Lieferwagen;
+DROP TABLE Kunden;
+DROP TABLE Mitarbeiter;
+DROP TABLE Position;
+DROP TABLE Abteilung;
