@@ -1,0 +1,66 @@
+--Aufgabe 5.1
+
+DROP TABLE Ta;
+DROP TABLE Tb;
+DROP TABLE Tc;
+
+
+CREATE TABLE Ta (
+	idA INTEGER PRIMARY KEY,
+	a2 INTEGER UNIQUE
+);
+
+CREATE TABLE Tb (
+	idB INTEGER PRIMARY KEY,
+	b2 INTEGER,
+	b3 INTEGER
+);
+
+CREATE TABLE Tc (
+	idC INTEGER PRIMARY KEY,
+	idA INTEGER,
+	idB INTEGER,
+	FOREIGN KEY (idA) REFERENCES Ta (idA),
+	FOREIGN KEY (idB) REFERENCES Tb (idB)
+);
+
+SELECT * FROM Ta;
+SELECT * FROM Tb;
+SELECT * FROM Tc;
+
+EXEC populateTables;
+
+CREATE OR ALTER PROCEDURE populateTables
+AS
+BEGIN
+	DECLARE @i INT;
+	SET @i = 1;
+
+	WHILE @i <= 10000
+	BEGIN
+		INSERT INTO Ta VALUES (@i, RAND()* 20000);
+		if @@ROWCOUNT != 0
+		BEGIN
+			SET @i = @i + 1;
+		END
+	END
+
+	SET @i = 1;
+	WHILE @i <= 3000
+	BEGIN
+		INSERT INTO Tb VALUES (@i, RAND()* 3000, RAND()* 3000);
+		SET @i = @i + 1;
+	END
+
+	SET @i = 1;
+
+	WHILE @i <= 30000
+	BEGIN
+		INSERT INTO Tc VALUES (@i, RAND()* 10000, RAND()* 3000);
+		if @@ROWCOUNT != 0
+		BEGIN
+			SET @i = @i + 1;
+		END
+	END
+END
+

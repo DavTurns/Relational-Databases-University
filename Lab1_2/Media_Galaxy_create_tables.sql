@@ -3,7 +3,6 @@ CREATE TABLE Abteilung (
   abteilungsname VARCHAR(30),
   adresse VARCHAR(70)
 );
-CREATE TABLE TEST;
 CREATE TABLE Position (
   position_id INTEGER IDENTITY(1,1) PRIMARY KEY,
   position_name varchar(20)
